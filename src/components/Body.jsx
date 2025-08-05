@@ -12,6 +12,6 @@ const Body = () => {
             <Footer />
         </div>
     )
-}
+} 
 
 export default Body
