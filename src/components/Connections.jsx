@@ -11,7 +11,6 @@ const Connections = () => {
         try {
             const response = await axios.get(BASE_URL + "/user/connections",
                 { withCredentials: true });
-            console.log(response.data.data);
             dispatch(addConnections(response.data.data))
         } catch (error) {
             console.log(error)
@@ -30,18 +29,19 @@ const Connections = () => {
         <div className='text-center my-10' >
             <h1 className='text-bold text-white text-2xl'>Connections</h1>
             {connections.map((connection) => {
-                const { firstName, lastName, age, gender, photoUrl, about, skills } = connection;
-                return (< div className='flex m-4 p-4 rounded-lg bg-base-300 w-2/3 mx-auto' >
-                    <div>
-                        <img alt='photo' className='w-20 h-20 rounded-full' src={photoUrl} />
-                    </div>
-                    <div className='text-left mx-10'>
-                        <h2 className='font-bold'>{firstName + " " + lastName}  </h2>
-                        {age && gender && <p className="text-sm text-gray-500 mb-2">Age: {age} | Gender: {gender}</p>}
-                        <p>{skills}</p>
-                        <p>{about}</p>
-                    </div>
-                </div>)
+                const { _id, firstName, lastName, age, gender, photoUrl, about, skills } = connection;
+                return (
+                    < div key={_id} className='flex m-4 p-4 rounded-lg bg-base-300 w-2/3 mx-auto' >
+                        <div>
+                            <img alt='photo' className='w-20 h-20 rounded-full' src={photoUrl} />
+                        </div>
+                        <div className='text-left mx-10'>
+                            <h2 className='font-bold'>{firstName + " " + lastName}  </h2>
+                            {age && gender && <p className="text-sm text-gray-500 mb-2">Age: {age} | Gender: {gender}</p>}
+                            <p>{skills}</p>
+                            <p>{about}</p>
+                        </div>
+                    </div>)
             })}
         </div >
     )
