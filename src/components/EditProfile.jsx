@@ -33,7 +33,7 @@ const EditProfile = ({ user }) => {
 
     return (
         <>
-            <div className="flex flex-col lg:flex-row justify-center items-stretch gap-10 my-10 px-4">
+            <div className="flex flex-row justify-center gap-10 overflow-x-auto my-10 px-4">
                 <div className="card w-full max-w-md bg-base-300 shadow-lg border border-base-300">
                     <div className="card-body">
                         <div className="flex justify-center mb-4">
@@ -53,7 +53,7 @@ const EditProfile = ({ user }) => {
                             />
                         </div>
 
-                        <div className="form-control mt-4">
+                        <div className="form-control mt-2">
                             <label className="label">
                                 <span className="label-text">Last Name</span>
                             </label>
@@ -64,7 +64,7 @@ const EditProfile = ({ user }) => {
                                 onChange={(e) => setLastName(e.target.value)}
                             />
                         </div>
-                        <div className="form-control mt-4">
+                        <div className="form-control mt-2">
                             <label className="label">
                                 <span className="label-text">Age</span>
                             </label>
@@ -90,7 +90,7 @@ const EditProfile = ({ user }) => {
                             <option value="prefer_not_to_say">Prefer not to disclose</option>
                         </select>
 
-                        {/*}   <div className="form-control mt-4">
+                        {/*}   <div className="form-control mt-2">
                             <label className="label">
                                 <span className="label-text">Gender</span>
                             </label>
@@ -103,7 +103,7 @@ const EditProfile = ({ user }) => {
                         
                         </div>*/}
 
-                        <div className="form-control mt-4">
+                        <div className="form-control mt-2">
                             <label className="label">
                                 <span className="label-text">photoUrl</span>
                             </label>
@@ -114,7 +114,7 @@ const EditProfile = ({ user }) => {
                                 onChange={(e) => setPhotoUrl(e.target.value)}
                             />
                         </div>
-                        <label className="form-control mt-4">
+                        <label className="form-control mt-2">
                             <div className="label">
                                 <span className="label-text">About</span>
                             </div>
@@ -125,7 +125,7 @@ const EditProfile = ({ user }) => {
                                 onChange={(e) => setAbout(e.target.value)}
                             />
                         </label>
-                        <div className="form-control mt-4">
+                        <div className="form-control mt-2">
                             <label className="label">
                                 <span className="label-text">Skills</span>
                             </label>
