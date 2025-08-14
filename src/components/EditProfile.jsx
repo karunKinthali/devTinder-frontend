@@ -6,21 +6,25 @@ import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
 const EditProfile = ({ user }) => {
-const [firstName, setFirstName] = useState(user.firstName || "");
-const [lastName, setLastName] = useState(user.lastName || "");
-const [age, setAge] = useState(user.age || "");
-const [gender, setGender] = useState(user.gender || "");
-const [photoUrl, setPhotoUrl] = useState(user.photoUrl || "");
-const [about, setAbout] = useState(user.about || "");
-const [skills, setSkills] = useState(user.skills || "");
+    const [firstName, setFirstName] = useState(user.firstName || "");
+    const [lastName, setLastName] = useState(user.lastName || "");
+    const [age, setAge] = useState(user.age || "");
+    const [gender, setGender] = useState(user.gender || "");
+    const [photoUrl, setPhotoUrl] = useState(user.photoUrl || "");
+    const [about, setAbout] = useState(user.about || "");
+    const [skills, setSkills] = useState(user.skills || "");
     const [error, setError] = useState('');
     const dispatch = useDispatch();
     const [showToast, setShowToast] = useState(false);
 
     const saveProfile = async () => {
         setError(""); //Clearing the errors before saving..
+        const parsedSkills = skills
+            .split(',')
+            .map((skill) => skill.trim())
+            .filter((skill) => skill.length > 0);
         try {
-            const response = await axios.patch(BASE_URL + "/profile/edit", { firstName, lastName, age, gender, photoUrl, about, skills }, { withCredentials: true })
+            const response = await axios.patch(BASE_URL + "/profile/edit", { firstName, lastName, age, gender, photoUrl, about, skills: parsedSkills }, { withCredentials: true })
             dispatch(addUser(response?.data?.data))
             setShowToast(true);
             setTimeout(() => {
